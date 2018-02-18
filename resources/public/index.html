@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exploring Interactve Art - :clojureD 2018</title>
+    <style>
+
+     @font-face {
+       font-family: 'pieces_of_eightregular';
+       src: url('fonts/pieces_of_eight-webfont.woff2') format('woff2'),
+       url('fonts/pieces_of_eight-webfont.woff') format('woff');
+       font-weight: normal;
+       font-style: normal;
+     }
+
+     html, body {
+       color: #333;
+     }
+
+     p, li {
+       font-size: 28px;
+       line-height: 1.5;
+     }
+     .center h1, .center h2, .center h3 {
+       line-height: 1.5;
+     }
+     h1 {
+       margin-bottom: 1em;
+     }
+     blockquote {
+       margin: 0;
+       padding: .1rem 1rem;
+       color: #666;
+       border-left: 5px solid #666;
+     }
+     .img-s {
+       display: inline-block;
+       width: 70px;
+       height: auto;
+       vertical-align: middle;
+     }
+     .img-s img {
+       width: 100%;
+     }
+     .img-m {
+       display: block;
+       margin: auto;
+       width: 350px;
+       height: auto;
+       vertical-align: middle;
+     }
+     .img-m img {
+       width: 100%;
+     }
+     .img-l {
+       display: block;
+       margin: auto;
+       width: 800px;
+       height: auto;
+       vertical-align: middle;
+     }
+     .img-l img {
+       width: 100%;
+     }
+     .highlight {
+       color: #d84d69;
+     }
+     a,
+     a:visited {
+       color: inherit
+     }
+     a:hover,
+     a:focus,
+     a:active {
+       color: #d84d69;
+     }
+
+     .remark-code {
+       max-height: 400px;
+       overflow: scroll
+     }
+
+     .small {
+       font-size: 0.7em;
+     }
+
+     .small blockquote p {
+       font-size: 1.5em !important;
+     }
+     .at {
+       font-family: 'pieces_of_eightregular', sans-serif;
+       color: #da3e5e;
+       text-shadow: #222 3px 3px 1px;
+       letter-spacing: 3px;
+       font-size: 1.7em;
+     }
+
+     .headline {
+       font-family: 'pieces_of_eightregular', sans-serif;
+       letter-spacing: 3px;
+       font-size: 2.2em;
+       color: #da3e5e;
+       text-shadow: #222 3px 3px 1px;
+     }
+
+     .bigbold {
+       color: #da3e5e;
+     }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+      class: center, middle
+
+      # .headline[Exploring Interactive Art]
+
+      ["Lisa Passing" :clojureD 2018]
+
+      ---
+
+      # $ whoami
+
+      --
+
+      Berlin based web dev, hobby game dev, wannabe digital artist.
+
+      --
+
+      Co-organizer of [ClojureBridge Berlin](http://clojurebridge-berlin.org/) and various [CryptoParties](https://www.cryptoparty.in/berlin).
+
+      ---
+
+      class: center, middle
+
+      --
+
+      I like creating weird stuff with code.
+
+      ---
+
+      class: center, middle
+
+      I would like to be an artist.
+
+      ---
+
+      Hacker's Ethic .small[(_[Levy. Hackers: Heroes of the Computer Revolution. 1984_](https://en.wikipedia.org/wiki/Hackers%3A_Heroes_of_the_Computer_Revolution))]
+
+      --
+
+      .small[
+
+      > Access to computers - and anything which might teach you omething about the way the world works - should be unlimited and total. Always yield to the Hands-On imperative!
+
+      > All information should be free.
+
+      > Mistrust authority - promote decentralization.
+
+      > Hackers should be judged by their hacking, not bogus criteria such as degress, age, race, or position.
+
+      > You can create art and beauty on a computer.
+
+      > Computers can change your life for the better.]
+
+      --
+
+      .small[[_Programming is Forgetting: Toward a New Hacker Ethic_ by Allison Parrish](http://opentranscripts.org/transcript/programming-forgetting-new-hacker-ethic/)]
+
+      ---
+
+      Hacker's Ethic .small[(_[Levy. Hackers: Heroes of the Computer Revolution. 1984_](https://en.wikipedia.org/wiki/Hackers%3A_Heroes_of_the_Computer_Revolution))]
+
+      .small[
+
+      > Access to computers - and anything which might teach you omething about the way the world works - should be unlimited and total. Always yield to the Hands-On imperative!
+
+      > All information should be free.
+
+      > Mistrust authority - promote decentralization.
+
+      > Hackers should be judged by their hacking, not bogus criteria such as degress, age, race, or position.
+
+      > .bigbold[__You can create art and beauty on a computer.__]
+
+      > Computers can change your life for the better.]
+
+      .small[[_Programming is Forgetting: Toward a New Hacker Ethic_ by Allison Parrish](http://opentranscripts.org/transcript/programming-forgetting-new-hacker-ethic/)]
+
+      ---
+
+      # Art
+
+      > Art is a diverse range of human activities in creating visual, auditory or performing artifacts (artworks), expressing the author's imaginative or technical skill, intended to be appreciated for their beauty or emotional power.
+
+      .right[.small[[source Wikipedia](https://en.wikipedia.org/wiki/Art)]]
+
+      ---
+
+      # Beauty
+
+      > Beauty is a characteristic of an [...] idea, object [...] that provides a perceptual experience of pleasure or satisfaction.
+
+      .right[.small[[source Wikipedia](https://en.wikipedia.org/wiki/Beauty)]]
+
+      ---
+
+      class: center, middle
+
+      Let's do it!
+
+      ---
+
+      class: center, middle
+
+      # .at[Research Time]
+
+      ---
+
+      background-image: url(img/recode.png)
+      background-size: contain
+
+      # .highlight[http://recodeproject.com/]
+
+      ---
+
+      background-image: url(img/manoloidee.png)
+      background-size: contain
+
+      # .highlight[https://twitter.com/manoloidee]
+
+      ---
+
+      background-image: url(img/plot.png)
+      background-size: contain
+
+      # .highlight[http://img.inconvergent.net/]
+
+      ---
+
+      background-image: url(img/lamps.png)
+      background-size: contain
+
+      # .highlight[https://n-e-r-v-o-u-s.com/]
+
+      ---
+
+      background-image: url(img/unity.png)
+      background-size: contain
+
+      # .highlight[https://twitter.com/algomystic/]
+
+      ---
+
+      background-image: url(img/midi.png)
+      background-size: contain
+
+      # .highlight[https://twitter.com/cacheflowe/]
+
+      ---
+
+      background-image: url(img/jawdrop.gif)
+      background-size: contain
+
+      ---
+
+      class: center, middle
+
+      # .at[Expectation Management Time]
+
+      ---
+
+      # Set a scope and stick to it
+
+      --
+
+      - Something that looks good
+
+      --
+
+      - Utilise generative algorithms
+
+      --
+
+      - Allows interaction
+
+      --
+
+      - Clojure
+
+      ---
+
+      # Pick a tool
+
+      --
+
+      [Processing](https://processing.org/)
+
+      --
+
+      ➪ [quil](https://github.com/quil/quil)
+
+      --
+
+      [p5.js](https://p5js.org/)
+
+      --
+
+      ➪ [quil-cljs](https://github.com/quil/quil/wiki/ClojureScript)
+
+      ---
+
+      class: center, middle
+
+      # .at[Exploration Time]
+
+      ---
+
+      class: center, middle
+
+      ## Something random
+
+      ---
+
+      ## Just use random
+
+      --
+
+      - random positions
+
+      --
+
+      - random colors
+
+      --
+
+      - random size
+
+      ---
+
+      class: center, middle
+
+      <canvas id="random"></canvas>
+
+      ---
+
+      class: center, middle
+
+      ## Normal & custom Distribution
+
+      ---
+
+      ## Normal Distribution
+
+      --
+
+      - normal distribution clusters values around an average (aka _mean_)
+
+      --
+
+      - it's also called Gaussian or Laplacian distribution
+
+      --
+
+      - the standard deviation says how closely values cluster around the mean
+
+      --
+
+      - a probability function of mean and deviation returns the value
+
+      ---
+
+      class: center, middle
+
+      <canvas id="normal-dist"></canvas>
+
+      ---
+
+      ## Custom Distribution
+
+      --
+
+      - bring your own probability function!
+
+      --
+
+      ### Example _Monte Carlo_
+
+      --
+
+      ```clj
+      (defn montecarlo []
+        (loop []
+          (let [r1 (q/random 1)
+                prob r1
+                r2 (/random 1)]
+            (if (< r2 prob)
+              r1
+              (recur)))))
+      ```
+      ---
+
+      class: center, middle
+
+      <canvas id="custom-dist"></canvas>
+
+      ---
+
+      class: center, middle
+
+      ## Noise
+
+      ---
+
+      class: center, middle
+
+      ## Use the force
+
+      ---
+
+      # Resources and further reading
+
+      - [Shiffman. Nature of Code. http://natureofcode.com/book](http://natureofcode.com/book/)
+      - [Bohnacker et al. Generative Gestaltung. http://www.generative-gestaltung.de](http://www.generative-gestaltung.de/)
+      - [Gonzalez Vivo, Lowe. The Book of Shaders. https://thebookofshaders.com/](https://thebookofshaders.com)/
+      - [Processing tutorials. https://processing.org/tutorials](https://processing.org/tutorials/)
+      - [fun programming. https://www.funprogramming.org](https://www.funprogramming.org/)
+
+      ---
+
+      # Thank you!
+
+      mail[at]lislis[dot]de
+
+      https://github.com/lislis
+
+      (Slides) https://lislis.de/talks/interactive-art
+
+    </textarea>
+    <script src="remark.min.js"></script>
+    <script>var slideshow = remark.create({
+       ratio: '16:9',
+       navigation: {
+         scroll: false
+       }});
+    </script>
+
+    <script src="js/main.js"></script>
+    <script>
+     interactive_art.core.run_random();
+     interactive_art.core.run_normal_dist();
+    </script>
+  </body>
+</html>
