@@ -409,7 +409,31 @@
 
       class: center, middle
 
+      <canvas id="click-dist"></canvas>
+
+      `click to set more dots`
+
+      ---
+
+      class: center, middle
+
       ## Noise
+
+      ---
+
+      ## Perlin Noise
+
+      - algorithm that produces pseudo-random values
+
+      - developed by Ken Perlin for generating textures in Tron (1982)
+
+      - can be adjusted by defineable octaves
+
+      ---
+
+      class: center, middle
+
+      <canvas id="noise"></canvas>
 
       ---
 
@@ -450,6 +474,9 @@
     <script>
      interactive_art.core.run_random();
      interactive_art.core.run_normal_dist();
+     interactive_art.core.run_custom_dist();
+     interactive_art.core.run_click_spawn();
+     interactive_art.core.run_noise();
     </script>
   </body>
 </html>
