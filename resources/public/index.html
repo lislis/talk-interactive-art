@@ -445,11 +445,31 @@
 
       <canvas id="noise-2"></canvas>
 
+      `click to add more dots`
+
       ---
 
       class: center, middle
 
       ## Use the force
+
+      ---
+
+      ## Vectors
+
+      - hold direction and magnitude
+
+      - simulate forces and simplified physics
+
+      ---
+
+      class: center, middle
+
+      <canvas id="vector"></canvas>
+
+      <button id="init-vector-sketch">Run sketch!</button>
+
+      `click to add more dots`
 
       ---
 
@@ -487,6 +507,11 @@
      //interactive_art.core.run_custom_dist();
      //interactive_art.core.run_click_spawn();
      //interactive_art.core.run_noise();
+
+     document.getElementById('init-vector-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_vec();
+       ev.target.remove();
+     })
     </script>
   </body>
 </html>

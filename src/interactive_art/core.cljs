@@ -5,6 +5,7 @@
             [sketches.click-spawn :as click]
             [sketches.noise :as noise]
             [sketches.noise-2 :as n2]
+            [sketches.vector :as vec]
             ))
 
 (defn ^:export run-random [] (random/sketch))
@@ -18,6 +19,8 @@
 (defn ^:export run-noise [] (noise/sketch))
 
 (defn ^:export run-n2 [] (n2/sketch))
+
+(defn ^:export run-vec [] (vec/sketch))
 
 ; uncomment this line to reset the sketch:
 ; (run-sketch)

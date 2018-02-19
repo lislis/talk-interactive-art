@@ -48,7 +48,7 @@
 
 (defn update-state [state]
   (let [s (update-all-noise state)]
-    (if (q/mouse-pressed?)
+    (if (and (q/mouse-pressed?) (= (q/mouse-button) :left))
       (add-dot s)
       s)
     ))
