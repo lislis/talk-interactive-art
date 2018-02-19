@@ -3,7 +3,8 @@
             [sketches.normal-dist :as norm]
             [sketches.custom-dist :as custom]
             [sketches.click-spawn :as click]
-            [sketches.noise :as noise]))
+                                        ;[sketches.noise :as noise]
+            ))
 
 (defn ^:export run-random [] (random/sketch))
 
@@ -13,7 +14,7 @@
 
 (defn ^:export run-click-spawn [] (click/sketch))
 
-(defn ^:export run-noise [] (noise/sketch))
+;(defn ^:export run-noise [] (noise/sketch))
 
 ; uncomment this line to reset the sketch:
 ; (run-sketch)
