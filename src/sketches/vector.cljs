@@ -28,18 +28,25 @@
         loc (add (:loc dot) vel)]
     (assoc dot :loc loc)))
 
-(defn apply-all-forces [state]
-  (let [dots (:dots state)
-        wind (:wind state)
-        updated-dots(map #(apply-force % wind) dots)]
-    (assoc state :dots updated-dots)))
+(defn apply-all-forces [dots force]
+  (let [updated-dots (map #(apply-force % force) dots)]
+    updated-dots))
+
+(defn alter-wind [wind]
+  (let [x (q/map-range (q/mouse-x) 0 (q/width) -1 1)
+        y (q/map-range (q/mouse-y) 0 (q/height) -1 1)]
+    (if (q/mouse-pressed?)
+      (do
+        (js/console.log x y)
+        {:x x :y y})
+      wind)))
 
 (defn update-state [state]
-  (let [a (apply-all-forces state)
-        dots (:dots a)
-        n (u/update-all-noise dots)
-        ]
-    (assoc state :dots n)))
+  (let [dots (:dots state)
+        wind (alter-wind (:wind state))
+        a (apply-all-forces dots wind)
+        n (u/update-all-noise a)]
+    (assoc state :dots n :wind wind)))
 
 (defn draw-state [state]
   (q/background 240)
