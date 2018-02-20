@@ -4,15 +4,6 @@
     <meta charset="utf-8">
     <title>Exploring Interactve Art - :clojureD 2018</title>
     <style>
-
-     @font-face {
-       font-family: 'pieces_of_eightregular';
-       src: url('fonts/pieces_of_eight-webfont.woff2') format('woff2'),
-       url('fonts/pieces_of_eight-webfont.woff') format('woff');
-       font-weight: normal;
-       font-style: normal;
-     }
-
      html, body {
        color: #333;
      }
@@ -88,19 +79,7 @@
        font-size: 1.5em !important;
      }
      .at {
-       font-family: 'pieces_of_eightregular', sans-serif;
-       color: #da3e5e;
-       text-shadow: #222 3px 3px 1px;
-       letter-spacing: 3px;
        font-size: 1.7em;
-     }
-
-     .headline {
-       font-family: 'pieces_of_eightregular', sans-serif;
-       letter-spacing: 3px;
-       font-size: 2.2em;
-       color: #da3e5e;
-       text-shadow: #222 3px 3px 1px;
      }
 
      .bigbold {
@@ -133,8 +112,6 @@
       ---
 
       class: center, middle
-
-      --
 
       I like creating weird stuff with code.
 
@@ -214,7 +191,7 @@
 
       class: center, middle
 
-      # .at[Research Time]
+      # .at[Research!]
 
       ---
 
@@ -267,7 +244,7 @@
 
       class: center, middle
 
-      # .at[Expectation Management Time]
+      # .at[Expectation Management!]
 
       ---
 
@@ -307,13 +284,13 @@
 
       --
 
-      ➪ [quil-cljs](https://github.com/quil/quil/wiki/ClojureScript)
+      ➪ [quil-cljs](https://github.com/quil/quil/wiki/ClojureScript) (actually uses [processing.js](http://processingjs.org/))
 
       ---
 
       class: center, middle
 
-      # .at[Exploration Time]
+      # .at[Exploration!]
 
       ---
 
@@ -347,7 +324,15 @@
 
       class: center, middle
 
-      ## Normal & custom Distribution
+      ## Distribution of values
+
+      ---
+
+      ## Uniform  Distribution
+
+      --
+
+      show graph
 
       ---
 
@@ -417,7 +402,7 @@
 
       class: center, middle
 
-      ## Noise
+      ## Smoothness
 
       ---
 
@@ -429,15 +414,15 @@
 
       - can be adjusted by defineable octaves
 
+      - can be 1, 2 or 3 dimensional
+
+      - in 1d each value has two neighbors
+
       ---
 
       class: center, middle
 
       <canvas id="canvas-noise"></canvas>
-
-      ---
-
-      - one dimension -> two neighbors
 
       ---
 
@@ -461,6 +446,8 @@
 
       - simulate forces and simplified physics
 
+      - eg trickle down of force -> acceleration -> speed -> location
+
       ---
 
       class: center, middle
@@ -473,11 +460,61 @@
 
       ---
 
+      class: middle, center
+
+      # Mix and match!
+
+      ---
+
+      # We learned about
+
+      - uniform, normal and custom distributions
+
+      - noise
+
+      - vectors and simulating forces
+
+      ...
+
+      ---
+
+      # Use them on
+
+      - colors
+
+      - shapes/sizes
+
+      - location
+
+      - intervals (time)
+
+      ...
+
+      ---
+
+      # With people input you can
+
+      - manipulate values directly
+
+      - manipulate algorithm params
+
+      - do something completely unrelated
+
+      ...
+
+      ---
+
+      class: center, middle
+
+      # We can all be artists
+
+      ---
+
       # Resources and further reading
 
       - [Shiffman. Nature of Code. http://natureofcode.com/book](http://natureofcode.com/book/)
       - [Bohnacker et al. Generative Gestaltung. http://www.generative-gestaltung.de](http://www.generative-gestaltung.de/)
-      - [Gonzalez Vivo, Lowe. The Book of Shaders. https://thebookofshaders.com/](https://thebookofshaders.com)/
+      - [Gonzalez Vivo, Lowe. The Book of Shaders. https://thebookofshaders.com/](https://thebookofshaders.com)
       - [Processing tutorials. https://processing.org/tutorials](https://processing.org/tutorials/)
       - [fun programming. https://www.funprogramming.org](https://www.funprogramming.org/)
 
