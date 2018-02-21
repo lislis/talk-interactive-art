@@ -25,7 +25,7 @@
    :radius (norm-dist 25 5)
    :hue (custom-dist 210 20)
    :sat (norm-dist 150 20)
-   :bright 200})
+   :bright (q/map-range (montecarlo) 0 1 50 200)})
 
 (defn setup []
   [(create-dot (/ (q/width) 2) (/ (q/height) 2))])
