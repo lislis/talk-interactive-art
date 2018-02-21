@@ -656,19 +656,78 @@
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
-      ## Use the force
+      ## Indirect interaction
 
       ---
 
       ## Vectors
 
+      --
+
       - hold direction and magnitude
+
+      --
 
       - simulate forces and simplified physics
 
-      - eg trickle down of force -> acceleration -> speed -> location
+      --
+
+      - eg movement: force ➪ acceleration ➪ speed ➪ location
+
+      ---
+
+      ## Vectors .small[pt 2]
+
+      --
+
+      ```cljs
+      (defn create-dot [x y]
+        {:loc {:x x
+               :y y}
+         :vel {:x 0
+               :y 0}
+         :acc {:x 0
+               :y 0}
+         :x-off (q/random 0 100000)
+         :y-off (q/random 0 100000)
+         :radius (norm-dist 25 5)
+         :hue (custom-dist 210 20)
+         :sat (norm-dist 150 20)
+         :bright (q/map-range (montecarlo) 0 1 50 255)})
+
+      ```
+
+      ---
+
+      ## Vectors .small[pt 3]
+
+      --
+
+      ```cljs
+      (defn apply-force [dot force]
+        (let [acc (add-vector (:acc dot) force)
+              vel (add-vector (:vel dot) acc)
+              loc (add-vector (:loc dot) vel)
+              loc-wrapped (wrap-edges loc (q/width) (q/height))]
+          (assoc dot :loc loc-wrapped)))
+      ```
+      ---
+
+      ## Vectors .small[pt 4]
+
+      ```cljs
+      ;; draw-state
+
+      (let [loc (:loc dot)
+            x-noise (q/noise (:x-off dot))
+            y-noise (q/noise (:y-off dot))
+            x (q/map-range x-noise 0 1 (- (:x loc) 100) (+ (:x loc) 100))
+            y (q/map-range y-noise 0 1 (- (:y loc) 100) (+ (:y loc) 100))]
+        ; draw things
+      )
+      ```
 
       ---
 
@@ -676,13 +735,14 @@
 
       <canvas id="vector"></canvas>
 
-      <button id="init-vector-sketch">Run sketch!</button>
+      .small[`drag mouse to adjust force`]
 
-      `drag mouse to adjust force`
+      <button id="init-vector-sketch">Run sketch!</button>
+      .small[[or run standalone](/vector.html)]
 
       ---
 
-      class: middle, center
+      class: middle, center, pink-slide
 
       # Mix and match!
 
@@ -726,7 +786,7 @@
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       # We can all be artists
 
@@ -749,6 +809,8 @@
       https://github.com/lislis
 
       (Slides) https://lislis.de/talks/interactive-art
+
+      (Code) https://github.com/lislis/talk-interactive-art
 
     </textarea>
     <script src="remark.min.js"></script>

@@ -4,9 +4,9 @@
             [lib.util :as u]))
 
 (defn setup []
-  {:dots (vec (for [i (range 10)]
+  {:dots (vec (for [i (range 100)]
           (u/create-dot (q/random 50 (- (q/width) 50))
-                        (q/random 50 200))))
+                        (q/random 50 500))))
    :wind {:x 0.1
           :y 0.1}})
 
@@ -23,8 +23,10 @@
   (dorun
    (for [c (:dots state)]
      (let [loc (:loc c)
-           x (q/map-range (q/noise (:x-off c)) 0 1 (- (:x loc) 100) (+ (:x loc) 100))
-           y (q/map-range (q/noise (:y-off c)) 0 1 (- (:y loc) 100) (+ (:y loc) 100))
+           x-noise (q/noise (:x-off c))
+           y-noise (q/noise (:y-off c))
+           x (q/map-range x-noise 0 1 (- (:x loc) 100) (+ (:x loc) 100))
+           y (q/map-range y-noise 0 1 (- (:y loc) 100) (+ (:y loc) 100))
            radius (:radius c)
            hue (:hue c)
            s (:sat c)
