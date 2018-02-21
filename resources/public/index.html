@@ -24,35 +24,6 @@
        color: #666;
        border-left: 5px solid #666;
      }
-     .img-s {
-       display: inline-block;
-       width: 70px;
-       height: auto;
-       vertical-align: middle;
-     }
-     .img-s img {
-       width: 100%;
-     }
-     .img-m {
-       display: block;
-       margin: auto;
-       width: 350px;
-       height: auto;
-       vertical-align: middle;
-     }
-     .img-m img {
-       width: 100%;
-     }
-     .img-l {
-       display: block;
-       margin: auto;
-       width: 800px;
-       height: auto;
-       vertical-align: middle;
-     }
-     .img-l img {
-       width: 100%;
-     }
      .highlight {
        color: #af1e66;
      }
@@ -605,10 +576,59 @@
 
       --
 
+      - noise returns values between 0 and 1
+
+      ---
+
+      ## Perlin Noise .small[pt 2]
+
+      --
+
+      - think of noise as defined space of natural ordered values
+
+      --
+
       - can be 1, 2 or 3 dimensional
+
+      --
 
         ➪ `(noise x y z)` can take up to 3 arguments
 
+      --
+
+      - noise returns the same value for a given coordinate in the space
+
+      --
+
+        ➪ we need to progress through the space
+
+      ---
+
+      ## Perlin Noise .small[pt 3]
+
+      --
+
+      ```cljs
+      (defn setup []
+        {:x-off 3})
+
+      ```
+      --
+
+      ```cljs
+      (defn update-state [state]
+        (let [x-off (update-noise (:x-off state))]
+          (assoc state :x-off x-off)))
+      ```
+      --
+
+      ```cljs
+      ;; draw-state
+      (let [x-noise (q/noise (:x-off state))
+            x (q/map-range x-noise 0 1 0 (q/width))]
+        (q/fill 0)
+        (q/ellipse x (/ (q/height) 2) 20 20))
+      ```
       ---
 
       class: center, middle
@@ -620,9 +640,19 @@
 
       class: center, middle
 
+      ## Let's play with it
+
+      ---
+
+      class: center, middle
+
       <canvas id="noise-2"></canvas>
 
-      `click to add more dots`
+      .small[`click to add more dots`]
+
+      <button id="init-noise2-sketch">Run sketch!</button>
+      .small[[or run standalone](/noise.html)]
+
 
       ---
 
@@ -754,6 +784,11 @@
 
      document.getElementById('init-noise-sketch').addEventListener('click', function (ev) {
        interactive_art.core.run_noise();
+       ev.target.remove();
+     });
+
+     document.getElementById('init-noise2-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_n2();
        ev.target.remove();
      });
 

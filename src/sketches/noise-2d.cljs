@@ -55,7 +55,8 @@
 
 (defn draw-mouse []
   (q/color-mode :rgb)
-  (q/fill 0)
+  (q/stroke 100)
+  (q/fill 100 0.5)
   (q/ellipse (q/mouse-x) (q/mouse-y) 30 30))
 
 (defn draw-state [state]

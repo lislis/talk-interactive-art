@@ -3,7 +3,7 @@
             [quil.middleware :as m]))
 
 (defn setup []
-  {:x-off 3})
+  {:x-off 0})
 
 (defn update-noise [val]
   (+ 0.01 val))
@@ -14,9 +14,10 @@
 
 (defn draw-state [state]
   (q/background 240)
-  (let [x (q/noise (:x-off state))]
+  (let [x-noise (q/noise (:x-off state))
+        x (q/map-range x-noise 0 1 0 (q/width))]
     (q/fill 0)
-    (q/ellipse (q/map-range x 0 1 0 (q/width)) (/ (q/height) 2) 20 20)))
+    (q/ellipse x (/ (q/height) 2) 20 20)))
 
 (q/defsketch sketch
   :host "canvas-noise"
