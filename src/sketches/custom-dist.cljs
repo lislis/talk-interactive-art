@@ -18,8 +18,7 @@
   (+ (* dev (montecarlo)) mean))
 
 (defn setup []
-  (q/frame-rate 5)
-  {})
+  (q/frame-rate 5))
 
 (defn update-state [state])
 
@@ -27,16 +26,16 @@
   (q/background 240)
   (dorun
    (for [c (take 10 (range))]
-     (let [w (norm-dist (/ (q/width) 2) 70)
-           h (norm-dist (/ (q/height) 2) 30)
+     (let [x (norm-dist (/ (q/width) 2) 70)
+           y (norm-dist (/ (q/height) 2) 30)
            radius (norm-dist 25 5)
            hue (custom-dist 210 20)
            s (norm-dist 150 20)
-           b 200]
+           b (q/map-range (montecarlo) 0 1 50 255)]
        (q/color-mode :hsb)
        (q/no-stroke)
        (q/fill hue s b)
-       (q/ellipse w h radius radius)))))
+       (q/ellipse x y radius radius)))))
 
 (q/defsketch sketch
   :host "custom-dist"

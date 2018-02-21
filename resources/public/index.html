@@ -54,7 +54,7 @@
        width: 100%;
      }
      .highlight {
-       color: #d84d69;
+       color: #af1e66;
      }
      a,
      a:visited {
@@ -63,7 +63,7 @@
      a:hover,
      a:focus,
      a:active {
-       color: #d84d69;
+       color: #af1e66;
      }
 
      .remark-code {
@@ -72,18 +72,44 @@
      }
 
      .small {
-       font-size: 0.7em;
+       font-size: 0.5em;
      }
 
      .small blockquote p {
-       font-size: 1.5em !important;
+       font-size: 2em !important;
      }
      .at {
        font-size: 1.7em;
      }
 
      .bigbold {
-       color: #da3e5e;
+       color: #af1e66;
+     }
+
+     .pink-slide {
+       background-color: #af1e66;
+       color: #ddd;
+     }
+
+     button {
+       background-color: #af1e66;
+       color: white;
+       border: none;
+       border-radius: 2px;
+       padding: 1em;
+     }
+     button:hover,
+     button:active {
+       background-color: #83174d;
+     }
+
+     code {
+       background-color: #f8d7e7;
+       padding: 0em 0.3em;
+     }
+
+     .hljs {
+       background-color: #f8d7e7 !important;
      }
 
     </style>
@@ -91,7 +117,7 @@
   <body>
     <textarea id="source">
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       # .headline[Exploring Interactive Art]
 
@@ -103,7 +129,11 @@
 
       --
 
-      Berlin based web dev, hobby game dev, wannabe digital artist.
+      Hi, I'm Lisa 👋
+
+      --
+
+      Berlin based web dev.
 
       --
 
@@ -169,7 +199,7 @@
 
       # Art
 
-      > Art is a diverse range of human activities in creating visual, auditory or performing artifacts (artworks), expressing the author's imaginative or technical skill, intended to be appreciated for their beauty or emotional power.
+      > Art is a diverse range of human activities in creating visual, auditory or performing .bigbold[__artifacts__] (artworks), expressing the author's imaginative or technical skill, intended to be appreciated for their beauty or emotional power.
 
       .right[.small[[source Wikipedia](https://en.wikipedia.org/wiki/Art)]]
 
@@ -177,7 +207,7 @@
 
       # Beauty
 
-      > Beauty is a characteristic of an [...] idea, object [...] that provides a perceptual experience of pleasure or satisfaction.
+      > Beauty is a characteristic of an [...] idea, object [...] that provides a perceptual .bigbold[__experience__] of pleasure or satisfaction.
 
       .right[.small[[source Wikipedia](https://en.wikipedia.org/wiki/Beauty)]]
 
@@ -189,7 +219,7 @@
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       # .at[Research!]
 
@@ -242,7 +272,7 @@
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       # .at[Expectation Management!]
 
@@ -252,7 +282,7 @@
 
       --
 
-      - Something that looks good
+      - Something that looks artsy
 
       --
 
@@ -288,7 +318,7 @@
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       # .at[Exploration!]
 
@@ -296,7 +326,7 @@
 
       class: center, middle
 
-      ## Something random
+      ## Let's start with random
 
       ---
 
@@ -308,21 +338,59 @@
 
       --
 
+      ```cljs
+      (let [x (q/random 0 (q/width))
+            y (q/random 0 (q/height))])
+      ```
+
+      --
+
       - random colors
 
       --
 
+      ```cljs
+      (let [r (q/random 0 255)
+            g (q/random 0 255)
+            b (q/random 0 255)])
+      ```
+      --
+
       - random size
 
+      --
+
+      ```cljs
+      (let [radius (q/random 10 50)])
+      ```
+
+      ---
+
+      ```cljs
+      ;; draw-state
+
+      (for [c (take 10 (range))]
+        (let [x (q/random 0 (q/width))
+              y (q/random 0 (q/height))
+              radius (q/random 10 50)
+              r (q/random 0 255)
+              g (q/random 0 255)
+              b (q/random 0 255)]
+          (q/no-stroke)
+          (q/fill r g b)
+          (q/ellipse x y radius radius)))))
+
+      ```
       ---
 
       class: center, middle
 
       <canvas id="random"></canvas>
+      <button id="init-random-sketch">Run sketch!</button>
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       ## Distribution of values
 
@@ -332,7 +400,17 @@
 
       --
 
-      show graph
+      - each value has the same probability of getting chosen
+
+      --
+
+      - aka `random`
+
+      --
+
+      .center[![uniform distribution graph](img/uniform.png)
+
+      .small[[Screenshot. Nature of Code, Example I.2](http://natureofcode.com/book/introduction/)]]
 
       ---
 
@@ -340,25 +418,104 @@
 
       --
 
-      - normal distribution clusters values around an average (aka _mean_)
+      - also called Gaussian or Laplacian distribution
 
       --
 
-      - it's also called Gaussian or Laplacian distribution
+      - values cluster around an average (aka _mean_)
+
+      --
+
+      - values near the mean have a higher probablity of getting chosen
 
       --
 
       - the standard deviation says how closely values cluster around the mean
 
+      ---
+
+      ## Normal Distribution .small[pt 2]
+
+      .center[![bell curve](img/bell-cruve.png)
+
+      .small[[Screenshot. Nature of Code, Figures I.2 and I.3](http://natureofcode.com/book/introduction/)]]
+
+      ---
+
+      ## Normal Distribution .small[pt 3]
+
       --
 
-      - a probability function of mean and deviation returns the value
+      - quil-cljs offers `random-gaussian`
+
+      --
+
+      - normalized to mean of 0 and standard deviation of 1
+
+      --
+
+        ➪ returns a float between 0 and 1
+
+      --
+
+      ```cljs
+      (defn norm-dist [mean dev]
+        (+ (* dev (q/random-gaussian)) mean))
+
+      ```
+      ---
+
+      ```cljs
+      ;; draw-state
+
+      (for [c (take 10 (range))]
+        (let [x (norm-dist (/ (q/width) 2) 70)
+              y (norm-dist (/ (q/height) 2) 30)
+              radius (norm-dist 25 5)
+              h (norm-dist 210 12)
+              s (norm-dist 150 20)
+              b 200]
+          (q/color-mode :hsb)
+          (q/no-stroke)
+          (q/fill h s b)
+          (q/ellipse x y radius radius)))
+
+      ```
 
       ---
 
       class: center, middle
 
       <canvas id="normal-dist"></canvas>
+      <button id="init-normal-sketch">Run sketch!</button>
+
+      ---
+
+      ## Bonus: HSB
+
+      --
+
+      - also known as HSL
+
+      --
+
+      - Hue, Saturation, Brightness/ Lightness
+
+      --
+
+      - Hue describes an angle on a 360 degree color wheel
+
+      --
+
+      - Saturation and Brightness range from 0 to 255
+
+      ---
+
+      class: center
+
+      ![hsl color wheel](img/hsl-color-wheel.png)
+
+      .small[[color wheel by Erin Sowards](http://www.erinsowards.com/articles/2011/01/colors.php)]
 
       ---
 
@@ -384,23 +541,53 @@
               r1
               (recur)))))
       ```
+      --
+
+      _the higher the number, the greater the probability it gets chosen_
+
+      ---
+
+      # Custom Distributon .small[pt 2]
+
+      --
+
+      ```cljs
+      (defn custom-dist [mean dev]
+        (+ (* dev (montecarlo)) mean))
+      ```
+
+      --
+
+      ```cljs
+      (let [b (q/map-range (montecarlo) 0 1 0 255)])
+      ```
+
       ---
 
       class: center, middle
 
       <canvas id="custom-dist"></canvas>
+      <button id="init-custom-sketch">Run sketch!</button>
 
       ---
 
+      class: center, middle, pink-slide
+
+      ## Let's play with it
+
+      ---
       class: center, middle
 
       <canvas id="click-dist"></canvas>
 
-      `click to set more dots`
+      .small[`click to set more dots`]
+
+      <button id="init-click-sketch">Run sketch!</button>
+      .small[[or run standalone](/click.html)]
 
       ---
 
-      class: center, middle
+      class: center, middle, pink-slide
 
       ## Smoothness
 
@@ -408,21 +595,26 @@
 
       ## Perlin Noise
 
+      --
+
       - algorithm that produces pseudo-random values
+
+      --
 
       - developed by Ken Perlin for generating textures in Tron (1982)
 
-      - can be adjusted by defineable octaves
+      --
 
       - can be 1, 2 or 3 dimensional
 
-      - in 1d each value has two neighbors
+        ➪ `(noise x y z)` can take up to 3 arguments
 
       ---
 
       class: center, middle
 
       <canvas id="canvas-noise"></canvas>
+      <button id="init-noise-sketch">Run sketch!</button>
 
       ---
 
@@ -539,11 +731,31 @@
 
     <script src="js/main.js"></script>
     <script>
-     //interactive_art.core.run_random();
-     //interactive_art.core.run_normal_dist();
-     //interactive_art.core.run_custom_dist();
-     //interactive_art.core.run_click_spawn();
-     //interactive_art.core.run_noise();
+
+     document.getElementById('init-random-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_random();
+       ev.target.remove();
+     });
+
+     document.getElementById('init-normal-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_normal_dist();
+       ev.target.remove();
+     });
+
+     document.getElementById('init-custom-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_custom_dist();
+       ev.target.remove();
+     });
+
+     document.getElementById('init-click-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_click_spawn();
+       ev.target.remove();
+     });
+
+     document.getElementById('init-noise-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_noise();
+       ev.target.remove();
+     });
 
      document.getElementById('init-vector-sketch').addEventListener('click', function (ev) {
        interactive_art.core.run_vec();

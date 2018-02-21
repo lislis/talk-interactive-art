@@ -77,8 +77,8 @@
     updated-dots))
 
 (defn alter-wind [wind]
-  (let [x (q/map-range (q/mouse-x) 0 (q/width) -1 1)
-        y (q/map-range (q/mouse-y) 0 (q/height) -1 1)]
+  (let [x (q/map-range (q/mouse-x) 0 (q/width) -2 2)
+        y (q/map-range (q/mouse-y) 0 (q/height) -2 2)]
     (if (q/mouse-pressed?)
       {:x x :y y}
       wind)))

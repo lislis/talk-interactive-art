@@ -25,29 +25,29 @@
 (defn update-state [state]
   (if (q/mouse-pressed?)
     (do
-      (js/console.log (q/mouse-x) (q/mouse-y))
       (conj state {:x (q/mouse-x) :y (q/mouse-y)}))
     state))
 
 (defn draw-mouse []
   (q/color-mode :rgb)
-  (q/fill 0)
+  (q/stroke 100)
+  (q/fill 100 0.5)
   (q/ellipse (q/mouse-x) (q/mouse-y) 30 30))
 
 (defn draw-state [state]
   (q/background 240)
   (dorun
    (for [c state]
-     (let [w (norm-dist (:x c) 10)
-           h (norm-dist (:y c) 10)
+     (let [x (norm-dist (:x c) 10)
+           y (norm-dist (:y c) 10)
            radius (norm-dist 25 5)
-           hue (custom-dist 210 20)
+           h (custom-dist 210 20)
            s (norm-dist 150 20)
            b 200]
        (q/color-mode :hsb)
        (q/no-stroke)
-       (q/fill hue s b)
-       (q/ellipse w h radius radius))))
+       (q/fill h s b)
+       (q/ellipse x y radius radius))))
   (draw-mouse))
 
 (q/defsketch sketch

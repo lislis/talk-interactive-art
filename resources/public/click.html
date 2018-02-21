@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exploring Interactve Art - :clojureD 2018</title>
+  </head>
+  <body>
+    <canvas id="click-dist"></canvas>
+    <pre>click to add more dots</pre>
+    <button id="init-click-sketch">Run sketch!</button>
+    <script src="js/main.js"></script>
+    <script>
+     document.getElementById('init-click-sketch').addEventListener('click', function (ev) {
+       interactive_art.core.run_click_spawn();
+       ev.target.remove();
+     })
+    </script>
+  </body>
+</html>
