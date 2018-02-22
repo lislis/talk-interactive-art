@@ -301,6 +301,12 @@
 
       class: center, middle
 
+      # With circles!
+
+      ---
+
+      class: center, middle
+
       ## Let's start with random
 
       ---
@@ -511,7 +517,7 @@
         (loop []
           (let [r1 (q/random 1)
                 prob r1
-                r2 (/random 1)]
+                r2 (q/random 1)]
             (if (< r2 prob)
               r1
               (recur)))))
