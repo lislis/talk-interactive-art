@@ -11,6 +11,8 @@
             [lein-figwheel "0.5.14"]]
   :hooks [leiningen.cljsbuild]
 
+  ;:jvm-opts  ["--add-modules" "java.xml.bind"]
+
   :cljsbuild
   {:builds [; development build with figwheel hot swap
             {:id "development"
