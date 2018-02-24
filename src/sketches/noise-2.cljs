@@ -2,6 +2,8 @@
   (:require [quil.core :as q :include-macros true]
             [quil.middleware :as m]))
 
+
+
 (defn norm-dist [mean dev]
   (+ (* dev (q/random-gaussian)) mean))
 
